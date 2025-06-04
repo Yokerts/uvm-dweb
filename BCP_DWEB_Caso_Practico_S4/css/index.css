@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+#header {
+    background-color: #42975e7e;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+}
+content {
+    position: absolute;
+    top: 200px;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+    text-align: center;
+    padding: 20px 100px;
+}
+#footer {
+    position: absolute;
+    padding-top: 10px;
+    bottom: 0px;
+    height: 30px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    background-color: #42975e7e;
+    text-align: center;
+}
+ul {
+    justify-content: left;
+    margin: auto;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
