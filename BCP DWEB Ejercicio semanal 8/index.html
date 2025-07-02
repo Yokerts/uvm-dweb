@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulación de Arrays</title>
+    <link href="./css/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+</head>
+
+<body class="bg-light p-5">
+
+    <div class="container">
+        <h1>BCP DWEB Ejercicio semanal 8</h1>
+        <br/>
+        <h2>Manipulación de Arrays</h2>
+
+        <br/>
+        <h3 class="subtitle">Calificaciones:</h3>
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                Clasificación Inicial
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Calificiación</th>
+                        <th scope="col">Posición</th>
+                    </tr>
+                </thead>
+                <tbody id="clasificacion-inicial"></tbody>
+            </table>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+            Clasificación Final Actualizada
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Calificiación</th>
+                        <th scope="col">Posición</th>
+                    </tr>
+                </thead>
+                <tbody id="clasificacion-final"></tbody>
+            </table>
+        </div>
+        <br/>
+        <h3 class="subtitle">Iteración de Arreglos</h3>
+        <br/>
+        <div id="biblioteca" class="row align-items-end"></div>
+    </div>
+    <script>
+        const participes = new Contenido();
+        // Declarar array y obtiene la lista de participantes
+
+        let participantes = participes.getParticipantes();
+
+        // Muestra las clasificaciones iniciales
+        const ulInicial = document.getElementById("clasificacion-inicial");
+        participantes.forEach((item, index) => {
+            ulInicial.innerHTML += `<tr><td>${item.nombre}</td><td>${item.calificacion}</td><td>${index + 1}</td></tr>`;
+        });
+
+        // Laura supera a Javier
+        const idxLaura = participantes.map(e => e.nombre).indexOf('Laura');
+        participantes[idxLaura].calificacion = 8.7;
+        const idxJavier = participantes.map(e => e.nombre).indexOf('Javier');
+    
+        if (idxLaura > idxJavier) {
+            [participantes[idxLaura], participantes[idxJavier]] = [participantes[idxJavier], participantes[idxLaura]];
+        }
+
+        // Patricia es descalificada y se elimina
+        participantes = participantes.filter(function (item) {
+            return item.nombre !== "Patricia" 
+        });
+
+        // Se agregar a Raúl y Sofía detrás de Elena y antes de Carlos
+        const idxCarlos = participantes.map(e => e.nombre).indexOf('Carlos');
+        participantes.splice(idxCarlos, 0, {nombre: "Raúl", calificacion: 9.3}, {nombre: "Sofía", calificacion: 9.2});
+
+        // Se agrega a Carmen en la primera posición
+        participantes.unshift({nombre: "Carmen", calificacion: 9.6});
+
+        // Muestra la clasificación final
+        const ulFinal = document.getElementById("clasificacion-final");
+        participantes.forEach((item, index) => {
+            ulFinal.innerHTML += `<tr><td>${item.nombre}</td><td>${item.calificacion}</td><td>${index + 1}</td></tr>`;
+        });
+    </script>
+    <script>
+        const bli = new Contenido();
+        // Declarar array y obtiene la lista de libros
+
+        let libros = participes.getBiblioteca();
+        console.log(libros);
+
+        // Muestra los libros de la biblioteca
+        const biblioteca = document.getElementById("biblioteca");
+        libros.forEach((item, index) => {
+            biblioteca.innerHTML += `
+            <div class="col-4 alert ${item.estadoLectura ? "alert-success":"alert-danger"}">
+                <div class="card h-200-px">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.autor}</h5>
+                        <p class="card-text">${item.titulo}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">${item.estadoLectura ? "Se puede leer":"No se puede leer"}</li>
+                    </ul>
+                </div>
+            </div>
+            `;
+        });
+    </script>
+    
+</body>
+</html>
