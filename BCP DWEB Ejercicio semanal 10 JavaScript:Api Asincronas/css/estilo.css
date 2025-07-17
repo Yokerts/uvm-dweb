@@ -1,0 +1,12 @@
+#producto {
+    width: 400px;
+}
+
+.price {
+    color: red;
+    font-size: 1rem;
+}
+
+.card {
+    padding: 10px;
+}

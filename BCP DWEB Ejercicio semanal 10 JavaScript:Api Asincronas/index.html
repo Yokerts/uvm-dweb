@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulación de Arrays</title>
+    <link href="./css/estilo.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="./js/script.js"></script>
+</head>
+
+<body class="bg-light p-5">
+
+    <div class="container">
+        <h1>BCP DWEB Ejercicio semanal 10 JavaScript</h1>
+        <br/>
+        <h2>Practicar programación de JavaScript y el consumo de APIs Asincronas</h2>
+        <br/>
+
+        <div id="producto">
+            <div id="oferta"></div>
+        </div>
+        
+    </div>
+    <script>
+        const producto =  buscarProducto(2).then(response => {
+            console.log("Producto", response)
+            $("#producto").append(`<div id="producto" class="card">
+                <h4>${response.title}</h4>
+                <img class="card-img-top" src="${response.image}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Categoria: ${response.category}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
+                    <p class="card-text">${response.description}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Precio: <pan class="price">$${response.price}</span></li>
+                </ul>
+            </div>`);
+
+            setTimeout(() => {
+                $("#oferta").append(`<div  class="alert alert-danger" role="alert">Oferta Especial</div>`);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
