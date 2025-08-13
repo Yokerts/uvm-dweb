@@ -25,26 +25,33 @@
         <h2>Practicar programación de JavaScript y el consumo de APIs Asincronas</h2>
         <br/>
 
-        <div id="producto">
+        <div id="producto" class="row align-items-end">
             <div id="oferta"></div>
         </div>
         
     </div>
     <script>
-        const producto =  buscarProducto(2).then(response => {
+        const productos =  obtenerProductos().then(response => {
             console.log("Producto", response)
-            $("#producto").append(`<div id="producto" class="card">
-                <h4>${response.title}</h4>
-                <img class="card-img-top" src="${response.image}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Categoria: ${response.category}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
-                    <p class="card-text">${response.description}</p>
+            const ulInicial = document.getElementById("producto");
+            response.forEach((item, index) => {
+                ulInicial.innerHTML += `
+                <div class="col-4 m-15-T">
+                    <div class="card card-h">
+                        <h4>${item.title}</h4>
+                        <img class="card-img-top" src="${item.image}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Categoria: ${item.category}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Descripción</h6>
+                            <p class="card-text">${item.description}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Precio: <pan class="price">$${item.price}</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Precio: <pan class="price">$${response.price}</span></li>
-                </ul>
-            </div>`);
+            `;
+            });
 
             setTimeout(() => {
                 $("#oferta").append(`<div  class="alert alert-danger" role="alert">Oferta Especial</div>`);

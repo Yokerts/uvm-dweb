@@ -1,12 +1,17 @@
-#producto {
-    width: 400px;
-}
-
 .price {
     color: red;
     font-size: 1rem;
 }
-
 .card {
     padding: 10px;
+}
+.card-h {
+    height: 60rem !important;
+}
+img {
+    max-height: 330px;
+}
+.m-15-T {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
