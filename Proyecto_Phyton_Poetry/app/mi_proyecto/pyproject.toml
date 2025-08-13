@@ -1,0 +1,19 @@
+[project]
+name = "mi-proyecto"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Carlos Medina",email = "ing_medina16@hotmail.com"}
+]
+readme = "README.md"
+requires-python = ">=2.7"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "mi_proyecto", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
