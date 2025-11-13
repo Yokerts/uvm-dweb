@@ -1,0 +1,13 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card-image img {
+  height: 300px;
+  object-fit: cover;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px 0;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Books App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  
+  <!-- Iconos -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="grey lighten-4">
+
+  <nav class="blue darken-3">
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">📚 Google Books - Proyecto Carlos Medina</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="page-footer blue darken-3">
+    <div class="container center-align">
+      <p>Hecho con ❤️ en Flask + Material Design</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
