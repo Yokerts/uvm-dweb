@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Cita Médica</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="appointment-detail">
+        <h1>Detalles de la Cita</h1>
+        <p><strong>Paciente:</strong> {{ appointment.patient.name }}</p>
+        <p><strong>Odontólogo:</strong> {{ appointment.dentist.name }}</p>
+        <p><strong>Fecha:</strong> {{ appointment.date }}</p>
+        <p><strong>Hora:</strong> {{ appointment.time }}</p>
+        <p><strong>Notas:</strong> {{ appointment.notes }}</p>
+        <a href="{% url 'appointments:list' %}">Volver a la lista de citas</a>
+    </div>
+    {% endblock %}
+</body>
+</html>
